@@ -36,5 +36,18 @@ export default {
     })
   ],
 
+  devServer: {
+    historyApiFallback: true,
+    stats: {
+      colors: true,
+    },
+    proxy: [
+      {
+        path: '/api',
+        target: 'https://www.google.com',
+        secure: false
+      }
+    ]
+  },
   devtool: optimizeMinimize ? 'source-map' : false,
 };
