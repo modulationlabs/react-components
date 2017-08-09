@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import yargs from 'yargs';
 import path from 'path';
+import HTMLWebpackPlugin from 'html-webpack-plugin';
 
 const { optimizeMinimize } = yargs.alias('p', 'optimize-minimize').argv;
 const nodeEnv = optimizeMinimize ? 'production' : 'development';
@@ -19,7 +20,7 @@ export default {
     loaders: [
       {
         test: /\.js$/, 
-        loader: 'babel', 
+        loader: 'babel-loader', 
         exclude: /node_modules/, 
         include: [path.resolve(__dirname, 'app')]
       },
@@ -30,6 +31,9 @@ export default {
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
     }),
+    new HTMLWebpackPlugin({
+      template: 'app/index.html'
+    })
   ],
 
   devtool: optimizeMinimize ? 'source-map' : false,
