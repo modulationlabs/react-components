@@ -4,8 +4,6 @@ import { Route } from 'react-router-dom';
 import './module.scss';
 import svg from './../../assets/sample.svg';
 
-console.log('svg: ', svg);
-
 class Module extends React.Component {
 
   render () {
