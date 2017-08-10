@@ -19,30 +19,40 @@ export default {
   module: {
     loaders: [
       {
-        test: /(\.js|\.jsx)$/, 
-        loader: 'babel-loader', 
-        exclude: /node_modules/, 
-        include: [path.resolve(__dirname, 'app')]
+        test: /(\.js|\.jsx)$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, 'app'),
+          path.resolve(__dirname, 'shared'),
+        ],
       },
       {
         test: /\.json$/,
         loader: 'json-loader',
         exclude: /node_modules/,
-        include: [path.resolve(__dirname, 'app')]
+        include: [path.resolve(__dirname, 'app')],
       },
       {
         test: /\.scss$/,
         loader: 'style-loader!css-loader!sass-loader',
         exclude: /node_modules/,
-        include: [path.resolve(__dirname, 'app')]
+        include: [
+          path.resolve(__dirname, 'app'),
+          path.resolve(__dirname, 'shared'),
+        ],
       },
       {
         test: /\.svg$/,
         loader: 'file-loader',
         exclude: /node_modules/,
-        include: [path.resolve(__dirname, 'assets')]
-      }
+        include: [path.resolve(__dirname, 'assets')],
+      },
     ],
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 
   plugins: [
@@ -50,8 +60,8 @@ export default {
       'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
     }),
     new HTMLWebpackPlugin({
-      template: 'app/index.html'
-    })
+      template: 'app/index.html',
+    }),
   ],
 
   devServer: {
@@ -63,9 +73,9 @@ export default {
       {
         path: '/api',
         target: 'https://www.google.com',
-        secure: false
-      }
-    ]
+        secure: false,
+      },
+    ],
   },
   devtool: optimizeMinimize ? 'source-map' : false,
 };
