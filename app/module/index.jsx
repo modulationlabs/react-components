@@ -5,7 +5,6 @@ import './module.scss';
 import svg from './../../assets/sample.svg';
 
 class Module extends React.Component {
-
   render () {
     return (
       <div className="module">
@@ -14,7 +13,6 @@ class Module extends React.Component {
       </div>
     );
   }
-
 }
 
 export default Module;

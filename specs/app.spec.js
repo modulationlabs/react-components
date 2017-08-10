@@ -1,4 +1,4 @@
-import React from 'react';
+import { describe, it, expect } from 'jest';
 
 describe('App', () => {
   it('should be able to run tests', () => {

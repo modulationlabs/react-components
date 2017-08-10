@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Module from './module/';
+import Module from './module/index.jsx';
 
 class App extends React.Component {
-
   render () {
     return (
       <BrowserRouter>
@@ -14,7 +13,6 @@ class App extends React.Component {
       </BrowserRouter>
     );
   }
-
 }
 
 ReactDOM.render(<App/>, document.querySelector('.application'));

@@ -8,7 +8,7 @@ const nodeEnv = optimizeMinimize ? 'production' : 'development';
 
 export default {
   entry: {
-    app: './app/index.js',
+    app: './app/index.jsx',
   },
 
   output: {
@@ -19,7 +19,7 @@ export default {
   module: {
     loaders: [
       {
-        test: /\.js$/, 
+        test: /(\.js|\.jsx)$/, 
         loader: 'babel-loader', 
         exclude: /node_modules/, 
         include: [path.resolve(__dirname, 'app')]
