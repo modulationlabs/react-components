@@ -17,10 +17,10 @@ export default {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /(\.js|\.jsx)$/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
         exclude: /node_modules/,
         include: [
           path.resolve(__dirname, 'app'),
@@ -29,13 +29,17 @@ export default {
       },
       {
         test: /\.json$/,
-        loader: 'json-loader',
+        use: 'json-loader',
         exclude: /node_modules/,
         include: [path.resolve(__dirname, 'app')],
       },
       {
         test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader',
+        use: [
+         'style-loader', 
+         { loader: 'css-loader', options: { importLoaders: 2 } },
+         'postcss-loader', 
+        ],
         exclude: /node_modules/,
         include: [
           path.resolve(__dirname, 'app'),
@@ -44,7 +48,10 @@ export default {
       },
       {
         test: /\.svg$/,
-        loader: 'file-loader',
+        use: [
+          'babel-loader',
+          'react-svg-loader',
+        ],
         exclude: /node_modules/,
         include: [path.resolve(__dirname, 'assets')],
       },

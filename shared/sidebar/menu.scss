@@ -1,3 +1,5 @@
+$color-menu-disabled: #777;
+
 .sidebar {
   &.hide { width: 1em; }
   display: flex;
@@ -5,6 +7,11 @@
   background: black;
   font-size: 16px;
   color: white;
+  &.disabled {
+    svg.icon path {
+      fill: $color-menu-disabled;
+    }
+  }
   ul { 
     list-style-type: none;
     padding: 0;
@@ -14,5 +21,20 @@
     img {
       width: 50%;
     }
+    &:hover {
+      cursor: pointer;
+    }
+    .text {
+      animation: slide 0.5s forwards;
+      animation-delay: 1s;
+    }
   }
+}
+
+@-webkit-keyframes slide {
+  100% { left: 0; }
+}
+
+@keyframes slide {
+  100% { left: 0; }
 }
