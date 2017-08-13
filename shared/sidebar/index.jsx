@@ -9,6 +9,7 @@ class Sidebar extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseExit = this.handleMouseExit.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.setActive = this.setActive.bind(this);
     this.state = {
       hover: false
     }
@@ -30,13 +31,23 @@ class Sidebar extends React.Component {
     this.setState({ hover: false });
   }
 
+  setActive(index) {
+    this.setState({ active: index });
+  }
+
   render() {
     const className = `sidebar ${this.state.hover ? '' : 'disabled'}`;
     const clonedChildren = React.Children.map(this.props.children, (child) => {
-      return React.cloneElement(child, { hover: this.state.hover });
+      return React.cloneElement(child, 
+        { 
+          hover: this.state.hover, 
+          setActive: this.setActive,
+          active: this.state.active,
+        }
+      );
     });
     return (
-      <nav 
+      <nav
         className={className} 
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseExit}

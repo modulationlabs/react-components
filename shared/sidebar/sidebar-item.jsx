@@ -10,9 +10,10 @@ class SidebarItem extends React.Component {
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.getText = this.getText.bind(this);
+    this.isActive = this.isActive.bind(this);
     this.state = {
       isHovering: false,
-      hasFocus: true,
+      isActive: false,
     }
   }
 
@@ -23,24 +24,30 @@ class SidebarItem extends React.Component {
   handleMouseLeave() {
     this.setState({ isHovering: false });
   }
-  
+
   getText() {
-    // if (!this.props.hover) return (<span>&nbsp;</span>);
     const { link, description, color, activeColor } = this.props;
     return (<span style={{ color: this.state.isHovering ? activeColor : color }}>{description}</span>);
   }
 
+  isActive(index) {
+    if (index === this.props.index) return true;
+    return false;
+  }
+
   render() {
-    const { link, description, Icon, color, activeColor } = this.props;
+    const { index, link, description, Icon, color, activeColor, setActive, active } = this.props;
+    const className = `sidebar-item ${this.isActive(active) ? 'active' : ''}`;
     return (
       <li 
-        className="sidebar-item"
+        className={className}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
+        onClick={setActive.bind(this, index)}
       >
         <Link to={link}>
           <Icon className="icon" width={50} height={50} /> 
-          <div className="text" style={{ visibility: this.props.hover ? 'visible' : 'hidden' }}>
+          <div className="text" >
             {this.getText()}
           </div>
         </Link>
@@ -54,6 +61,8 @@ SidebarItem.defaultProps = {
   color: '#fff',
   activeColor: '#cc0033',
   hover: false,
+  setActive: () => {},
+  active: 1,
 };
 
 SidebarItem.propTypes = {
@@ -63,6 +72,9 @@ SidebarItem.propTypes = {
   color: PropTypes.string,
   activeColor: PropTypes.string,
   hover: PropTypes.bool.isRequired,
+  setActive: PropTypes.func.isRequired,
+  active: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default SidebarItem;
