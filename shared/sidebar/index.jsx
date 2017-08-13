@@ -60,7 +60,6 @@ class Sidebar extends React.Component {
   }
 }
 
-
 Sidebar.propTypes = {
   children: PropTypes.node.isRequired,
 };
