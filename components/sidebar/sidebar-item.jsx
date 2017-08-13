@@ -46,7 +46,7 @@ class SidebarItem extends React.Component {
         onClick={setActive.bind(this, index)}
       >
         <Link to={link}>
-          <Icon className="icon" width={50} height={50} /> 
+          <Icon className="icon" width={50} height={50} />
           <div className="text" >
             {this.getText()}
           </div>
