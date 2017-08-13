@@ -8,7 +8,7 @@ const nodeEnv = optimizeMinimize ? 'production' : 'development';
 
 export default {
   entry: {
-    app: './app/index.jsx',
+    components: './components/index.js',
   },
 
   output: {
@@ -23,27 +23,25 @@ export default {
         use: 'babel-loader',
         exclude: /node_modules/,
         include: [
-          path.resolve(__dirname, 'app'),
-          path.resolve(__dirname, 'shared'),
+          path.resolve(__dirname, 'components'),
         ],
       },
       {
         test: /\.json$/,
         use: 'json-loader',
         exclude: /node_modules/,
-        include: [path.resolve(__dirname, 'app')],
+        include: [path.resolve(__dirname, 'components')],
       },
       {
         test: /\.scss$/,
         use: [
-         'style-loader', 
+         'style-loader',
          { loader: 'css-loader', options: { importLoaders: 2 } },
-         'postcss-loader', 
+         'postcss-loader',
         ],
         exclude: /node_modules/,
         include: [
-          path.resolve(__dirname, 'app'),
-          path.resolve(__dirname, 'shared'),
+          path.resolve(__dirname, 'components'),
         ],
       },
       {
@@ -65,9 +63,6 @@ export default {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
-    }),
-    new HTMLWebpackPlugin({
-      template: 'app/index.html',
     }),
   ],
 

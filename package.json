@@ -2,12 +2,13 @@
   "name": "react-crystal",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "components/index.js",
   "scripts": {
     "test": "jest",
     "lint": "./node_modules/.bin/eslint **/*.js",
     "start": "webpack-dev-server --config=webpack.config.babel.js",
-    "build": "webpack --config=webpack.config.babel.js"
+    "build": "webpack --config=webpack.config.babel.js",
+    "watch": "webpack --config=webpack.config.babel.js --watch"
   },
   "author": "Christopher Hill",
   "license": "ISC",
