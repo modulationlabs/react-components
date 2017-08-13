@@ -1,5 +1,7 @@
-import { Sidebar } from './sidebar';
+import Sidebar from './sidebar';
+import SidebarItem from './sidebar/sidebar-item';
 
 export {
-  Sidebar
+  Sidebar,
+  SidebarItem,
 };

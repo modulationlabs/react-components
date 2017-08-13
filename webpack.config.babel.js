@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import yargs from 'yargs';
 import path from 'path';
-import HTMLWebpackPlugin from 'html-webpack-plugin';
 
 const { optimizeMinimize } = yargs.alias('p', 'optimize-minimize').argv;
 const nodeEnv = optimizeMinimize ? 'production' : 'development';
@@ -14,6 +13,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: optimizeMinimize ? '[name].min.js' : '[name].js',
+    libraryTarget: 'umd',
   },
 
   module: {
@@ -35,9 +35,9 @@ export default {
       {
         test: /\.scss$/,
         use: [
-         'style-loader',
-         { loader: 'css-loader', options: { importLoaders: 2 } },
-         'postcss-loader',
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 2 } },
+          'postcss-loader',
         ],
         exclude: /node_modules/,
         include: [

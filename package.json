@@ -2,7 +2,7 @@
   "name": "react-crystal",
   "version": "1.0.0",
   "description": "",
-  "main": "components/index.js",
+  "main": "dist/components.js",
   "scripts": {
     "test": "jest",
     "lint": "./node_modules/.bin/eslint **/*.js",
