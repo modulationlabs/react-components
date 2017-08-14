@@ -38,7 +38,7 @@ class SidebarItem extends React.Component {
   render() {
     const { index, link, description, Icon, color, activeColor, setActive, active } = this.props;
     const className = `sidebar-item ${this.isActive(active) ? 'active' : ''}`;
-    return (
+    return ( // eslint-disable-next-line 
       <li 
         className={className}
         onMouseEnter={this.handleMouseEnter}
@@ -46,7 +46,7 @@ class SidebarItem extends React.Component {
         onClick={setActive.bind(this, index)}
       >
         <Link to={link}>
-          <Icon className="icon" width={50} height={50} />
+          <Icon className="icon" width="50px" height="50px" />
           <div className="text" >
             {this.getText()}
           </div>
