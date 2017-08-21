@@ -1,5 +1,6 @@
 $color-menu-disabled: #777;
 $color-menu-inactive: #444;
+$color-menu-enabled: #fff;
 $font-family: 'Arial';
 
 .sidebar {
@@ -8,6 +9,10 @@ $font-family: 'Arial';
   background: black;
   font-size: 12px;
   color: white;
+  svg.icon path {
+    fill: $color-menu-enabled;
+    animation: fadein 0.2s ease-in-out; // todo: fixme
+  }
   &.disabled {
     svg.icon path {
       fill: $color-menu-disabled;

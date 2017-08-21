@@ -48,7 +48,7 @@ class Sidebar extends React.Component {
     });
     return (
       <nav
-        className={className} 
+        className={className}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseExit}
       >
